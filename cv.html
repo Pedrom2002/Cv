@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Miguel Domingos Marques - CV</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #e94560;
+            --accent-light: #ff6b6b;
+            --gold: #f4a261;
+            --text-light: #edf2f7;
+            --text-muted: #a0aec0;
+            --card-bg: rgba(255,255,255,0.03);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Source Sans 3', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0f0f23 100%);
+            color: var(--text-light);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* Animated background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.15;
+            background-image: 
+                radial-gradient(circle at 20% 80%, var(--accent) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, var(--gold) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, #4facfe 0%, transparent 30%);
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+            padding: 50px;
+            background: var(--card-bg);
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
+            opacity: 0.1;
+        }
+
+        .photo-container {
+            position: relative;
+        }
+
+        .photo-frame {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(135deg, var(--accent), var(--gold), var(--accent-light));
+            position: relative;
+        }
+
+        .photo-frame::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--gold), var(--accent-light));
+            animation: rotate-border 8s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes rotate-border {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 20%;
+            border: 4px solid var(--primary);
+            position: relative;
+            z-index: 1;
+        }
+
+        .photo-accent {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            box-shadow: 0 10px 30px rgba(233, 69, 96, 0.4);
+        }
+
+        .hero-content {
+            position: relative;
+        }
+
+        .name {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, var(--text-light) 0%, var(--gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .title {
+            font-size: 1.4rem;
+            color: var(--accent);
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+        }
+
+        .about {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-muted);
+            max-width: 600px;
+        }
+
+        .contact-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--text-light);
+        }
+
+        .contact-item:hover {
+            background: rgba(233, 69, 96, 0.2);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+
+        .contact-icon {
+            width: 20px;
+            height: 20px;
+            fill: var(--accent);
+        }
+
+        /* Main Content Grid */
+        .main-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .section {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 35px;
+            border: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .section:hover {
+            border-color: rgba(233, 69, 96, 0.3);
+            transform: translateY(-5px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+
+        .section-full {
+            grid-column: 1 / -1;
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid rgba(255,255,255,0.1);
+        }
+
+        .section-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 600;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .skill-category {
+            margin-bottom: 20px;
+        }
+
+        .skill-category-title {
+            font-size: 0.9rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: scale(1.05);
+        }
+
+        /* Timeline Items */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 5px;
+            bottom: 5px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--gold));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 8px;
+            width: 14px;
+            height: 14px;
+            background: var(--accent);
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 20px rgba(233, 69, 96, 0.5);
+        }
+
+        .timeline-date {
+            display: inline-block;
+            padding: 4px 12px;
+            background: rgba(233, 69, 96, 0.2);
+            color: var(--accent-light);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .timeline-subtitle {
+            color: var(--gold);
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+
+        .timeline-desc {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Certifications */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .cert-item {
+            padding: 20px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .cert-item:hover {
+            background: rgba(233, 69, 96, 0.1);
+            border-color: var(--accent);
+        }
+
+        .cert-issuer {
+            font-size: 0.8rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .cert-name {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .cert-link {
+            display: inline-block;
+            padding: 8px 16px;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin-top: 8px;
+        }
+
+        .cert-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(233, 69, 96, 0.4);
+        }
+
+        /* Projects */
+        .project-card {
+            padding: 25px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px;
+            border: 1px solid rgba(255,255,255,0.08);
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        .project-card:hover {
+            border-color: var(--gold);
+            transform: translateX(10px);
+        }
+
+        .project-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--gold);
+        }
+
+        .project-desc {
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+
+        .project-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .stack-tag {
+            padding: 5px 12px;
+            background: rgba(244, 162, 97, 0.2);
+            color: var(--gold);
+            border-radius: 15px;
+            font-size: 0.8rem;
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-link:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .hero {
+                grid-template-columns: 1fr;
+                text-align: center;
+                padding: 40px 30px;
+            }
+
+            .photo-container {
+                display: flex;
+                justify-content: center;
+            }
+
+            .photo-frame {
+                width: 220px;
+                height: 220px;
+            }
+
+            .name {
+                font-size: 2.5rem;
+            }
+
+            .contact-bar {
+                justify-content: center;
+            }
+
+            .main-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about {
+                margin: 0 auto;
+            }
+        }
+
+        @media print {
+            * {
+                -webkit-print-color-adjust: exact !important;
+                print-color-adjust: exact !important;
+                color-adjust: exact !important;
+            }
+
+            body {
+                background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0f0f23 100%) !important;
+                color: var(--text-light) !important;
+            }
+
+            .bg-pattern {
+                opacity: 0.15 !important;
+            }
+
+            .section {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .project-card {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            .hero {
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+
+            a {
+                color: inherit !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+    
+    <div class="container">
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="photo-container">
+                <div class="photo-frame">
+                    <img src="image.png" alt="Pedro Miguel Domingos Marques" class="photo" id="profile-photo">
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <h1 class="name">Pedro Miguel<br>Domingos Marques</h1>
+                <p class="title">Data Scientist & Developer</p>
+                <p class="about">
+                    Aspiring Data Scientist with robust analytical skills and hands-on experience in machine learning, 
+                    data visualization, and statistical analysis. Demonstrated ability to develop and deploy end-to-end 
+                    ML pipelines, combining technical expertise in Python and data science with a strong customer 
+                    service background to deliver actionable insights and drive business impact.
+                </p>
+                
+                <div class="contact-bar">
+                    <a href="mailto:pedrom02.dev@gmail.com" class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                        pedrom02.dev@gmail.com
+                    </a>
+                    <a href="tel:+351939915944" class="contact-item">
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                        (+351) 939 915 944
+                    </a>
+                    <a href="https://www.linkedin.com/in/pedro-marques-056baa366/" class="contact-item" target="_blank">
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                        LinkedIn
+                    </a>
+                    <a href="https://github.com/Pedrom2002" class="contact-item" target="_blank">
+                        <svg class="contact-icon" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg>
+                        GitHub
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-grid">
+            <!-- Skills -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Data & Machine Learning</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">NumPy</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Seaborn</span>
+                            <span class="skill-tag">Feature Engineering</span>
+                            <span class="skill-tag">Model Deployment</span>
+                            <span class="skill-tag">Monitoring</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Programming & Tools</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">FastAPI</span>
+                            <span class="skill-tag">Flask</span>
+                            <span class="skill-tag">Streamlit</span>
+                            <span class="skill-tag">XGBoost</span>
+                            <span class="skill-tag">CatBoost</span>
+                            <span class="skill-tag">SHAP</span>
+                        </div>
+                    </div>
+                    <div class="skill-category">
+                        <h3 class="skill-category-title">Business Intelligence</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Tableau</span>
+                            <span class="skill-tag">Looker</span>
+                            <span class="skill-tag">Data Modeling</span>
+                            <span class="skill-tag">Dashboarding</span>
+                            <span class="skill-tag">Reporting</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Education -->
+            <section class="section">
+                <div class="section-header">
+                    <h2 class="section-title">Education</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">2024 – 2026</span>
+                        <h3 class="timeline-title">CTeSP in Mobile Devices Development</h3>
+                        <p class="timeline-subtitle">ISTEC • Lisboa, Portugal</p>
+                        <p class="timeline-desc">EQF Level 5 - Curso Técnico Superior Profissional</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">2022</span>
+                        <h3 class="timeline-title">Bachelor's in Clinical Physiology</h3>
+                        <p class="timeline-subtitle">ESTeSL</p>
+                        <p class="timeline-desc">(Incomplete)</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Certifications -->
+            <section class="section section-full">
+                <div class="section-header">
+                    <h2 class="section-title">Certifications</h2>
+                </div>
+                <div class="cert-grid">
+                    <div class="cert-item">
+                        <p class="cert-issuer">IBM • Coursera</p>
+                        <p class="cert-name">Data Science Professional Certificate</p>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/AN55T7XILXPL" class="cert-link" target="_blank">View Certificate</a>
+                    </div>
+                    <div class="cert-item">
+                        <p class="cert-issuer">Google • Coursera</p>
+                        <p class="cert-name">Advanced Data Analytics Professional Certificate</p>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/RR0B0XKCUHDI" class="cert-link" target="_blank">View Certificate</a>
+                    </div>
+                    <div class="cert-item">
+                        <p class="cert-issuer">UC Davis • Coursera</p>
+                        <p class="cert-name">Data Visualization with Tableau Specialization</p>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/5JPZ4PIZFU8K" class="cert-link" target="_blank">View Certificate</a>
+                    </div>
+                    <div class="cert-item">
+                        <p class="cert-issuer">IBM • Coursera</p>
+                        <p class="cert-name">AI Engineering Professional Certificate</p>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/B9LD44ZMNQX8" class="cert-link" target="_blank">View Certificate</a>
+                    </div>
+                    <div class="cert-item">
+                        <p class="cert-issuer">Johns Hopkins University • Coursera</p>
+                        <p class="cert-name">Advanced Statistics for Data Science</p>
+                        <a href="https://www.coursera.org/account/accomplishments/specialization/HOH7WGHXDRJ7" class="cert-link" target="_blank">View Certificate</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Projects -->
+            <section class="section section-full">
+                <div class="section-header">
+                    <h2 class="section-title">Projects</h2>
+                </div>
+                
+                <div class="project-card">
+                    <h3 class="project-title">End-to-End Airline Passenger Satisfaction System</h3>
+                    <p class="project-desc">
+                        Developed end-to-end ML pipeline predicting passenger satisfaction with 96.4% accuracy.
+                        Evolution: XGBoost prototype → Secure Flask web app → Production CatBoost system.
+                        Built FastAPI microservices with Docker, real-time monitoring dashboard, and SHAP interpretability.
+                        Implemented JWT auth, batch predictions, feature drift detection, and 90%+ test coverage.
+                    </p>
+                    <div class="project-stack">
+                        <span class="stack-tag">Python</span>
+                        <span class="stack-tag">CatBoost</span>
+                        <span class="stack-tag">FastAPI</span>
+                        <span class="stack-tag">Docker</span>
+                        <span class="stack-tag">Flask</span>
+                        <span class="stack-tag">Streamlit</span>
+                        <span class="stack-tag">PostgreSQL</span>
+                    </div>
+                    <a href="https://github.com/Pedrom2002/Airline-Passenger-Satisfaction--v2" class="cert-link" target="_blank" style="margin-top: 15px;">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">Energy Consumption Forecast System for Portugal</h3>
+                    <p class="project-desc">
+                        Developed ML system predicting national power consumption using XGBoost regression.
+                        Built production-ready FastAPI microservice with real-time predictions and automated
+                        data pipeline for Portuguese energy grid data analysis.
+                    </p>
+                    <div class="project-stack">
+                        <span class="stack-tag">Python</span>
+                        <span class="stack-tag">XGBoost</span>
+                        <span class="stack-tag">FastAPI</span>
+                        <span class="stack-tag">Jupyter Notebook</span>
+                    </div>
+                    <a href="https://github.com/Pedrom2002/energy-forecast-pt" class="cert-link" target="_blank" style="margin-top: 15px;">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">VR Aim Training Application for Meta Quest</h3>
+                    <p class="project-desc">
+                        Developed immersive VR shooting range application using Unity XR Toolkit for Meta Quest headsets.
+                        Features realistic weapon physics, dynamic target system with combo multipliers, spatial 3D audio,
+                        and comprehensive performance tracking. Implemented automated editor tools for weapon configuration.
+                    </p>
+                    <div class="project-stack">
+                        <span class="stack-tag">Unity 2022.3</span>
+                        <span class="stack-tag">C#</span>
+                        <span class="stack-tag">Meta XR SDK</span>
+                        <span class="stack-tag">VR</span>
+                    </div>
+                    <a href="https://github.com/Pedrom2002/VrUnityGame" class="cert-link" target="_blank" style="margin-top: 15px;">View on GitHub</a>
+                </div>
+
+                <div class="project-card">
+                    <h3 class="project-title">E-commerce Web Application</h3>
+                    <p class="project-desc">
+                        Built full-stack shopping platform combining Angular 18 with Server-Side Rendering (SSR) frontend
+                        and Flask/SQLAlchemy REST API backend. Features product catalog, shopping cart, user authentication,
+                        and order management system.
+                    </p>
+                    <div class="project-stack">
+                        <span class="stack-tag">Angular 18</span>
+                        <span class="stack-tag">TypeScript</span>
+                        <span class="stack-tag">Flask</span>
+                        <span class="stack-tag">SQLAlchemy</span>
+                        <span class="stack-tag">REST API</span>
+                    </div>
+                    <a href="https://github.com/Pedrom2002/Ecommerce-web-app" class="cert-link" target="_blank" style="margin-top: 15px;">View on GitHub</a>
+                </div>
+            </section>
+
+            <!-- Work Experience -->
+            <section class="section section-full">
+                <div class="section-header">
+                    <h2 class="section-title">Work Experience</h2>
+                </div>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <span class="timeline-date">Set 2023 – Dez 2023</span>
+                        <h3 class="timeline-title">Store Assistant</h3>
+                        <p class="timeline-subtitle">Pingo Doce • Lisboa, Portugal</p>
+                        <p class="timeline-desc">
+                            Processed over 200 daily transactions with accuracy. 
+                            Provided customer service and cross-departmental support.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Out 2021 – Abr 2022</span>
+                        <h3 class="timeline-title">Customer Service</h3>
+                        <p class="timeline-subtitle">H3 • Lisboa, Portugal</p>
+                        <p class="timeline-desc">
+                            Managed stock control and team organization. 
+                            Assisted with onboarding and training of new team members.
+                        </p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">Jun 2021 – Set 2021</span>
+                        <h3 class="timeline-title">Customer Service</h3>
+                        <p class="timeline-subtitle">McDonald's</p>
+                        <p class="timeline-desc">
+                            Served over 300 customers per day in a high-pressure environment.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="mailto:pedrom02.dev@gmail.com" class="footer-link">📧 Email</a>
+                <a href="https://www.linkedin.com/in/pedro-marques-056baa366/" class="footer-link" target="_blank">💼 LinkedIn</a>
+                <a href="https://github.com/Pedrom2002" class="footer-link" target="_blank">💻 GitHub</a>
+            </div>
+            <p>Pedro Miguel Domingos Marques © 2024</p>
+        </footer>
+    </div>
+</body>
+</html>
