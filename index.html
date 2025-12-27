@@ -207,7 +207,7 @@
         /* Main Content Grid */
         .main-grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1fr;
             gap: 40px;
         }
 
@@ -259,7 +259,8 @@
         /* Skills */
         .skills-grid {
             display: grid;
-            gap: 20px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
         }
 
         .skill-category {
