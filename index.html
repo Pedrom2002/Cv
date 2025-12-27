@@ -583,21 +583,46 @@
                 color-adjust: exact !important;
             }
 
+            /* Disable all animations and transitions for faster rendering */
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+
             body {
                 background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, #0f0f23 100%) !important;
                 color: var(--text-light) !important;
             }
 
+            /* Hide background pattern to reduce file size */
             .bg-pattern {
-                opacity: 0.15 !important;
+                display: none !important;
             }
 
+            /* Hide decorative gradients */
+            .hero::before {
+                display: none !important;
+            }
+
+            /* Remove heavy blur effects */
+            .hero, .section {
+                backdrop-filter: none !important;
+                -webkit-backdrop-filter: none !important;
+            }
+
+            /* Optimize image rendering */
+            .photo {
+                image-rendering: optimizeSpeed !important;
+                -webkit-print-color-adjust: exact !important;
+            }
+
+            /* Optimize page breaks */
             .section {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
 
-            .project-card {
+            .project-card, .timeline-item, .cert-card {
                 break-inside: avoid;
                 page-break-inside: avoid;
             }
@@ -605,6 +630,12 @@
             .hero {
                 break-inside: avoid;
                 page-break-inside: avoid;
+            }
+
+            /* Force page break to separate content clearly */
+            .section-full:first-of-type {
+                page-break-before: always;
+                break-before: always;
             }
 
             a {
@@ -625,7 +656,7 @@
         <header class="hero">
             <div class="photo-container">
                 <div class="photo-frame">
-                    <img src="image.png" alt="Pedro Miguel Domingos Marques" class="photo" id="profile-photo">
+                    <img src="image_optimized.jpg" alt="Pedro Miguel Domingos Marques" class="photo" id="profile-photo">
                 </div>
             </div>
             
